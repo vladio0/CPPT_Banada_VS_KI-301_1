@@ -3,12 +3,12 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Клас lab1 реалізує приклад програми до лабораторної роботи №1
+ * РљР»Р°СЃ lab1 СЂРµР°Р»С–Р·СѓС” РїСЂРёРєР»Р°Рґ РїСЂРѕРіСЂР°РјРё РґРѕ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕС— СЂРѕР±РѕС‚Рё в„–1
  */
 public class LAB_1 {
 
     /**
-     * Статичний метод main є точкою входу в програму
+     * РЎС‚Р°С‚РёС‡РЅРёР№ РјРµС‚РѕРґ main С” С‚РѕС‡РєРѕСЋ РІС…РѕРґСѓ РІ РїСЂРѕРіСЂР°РјСѓ
      *
      * @param args
      * @throws FileNotFoundException
@@ -21,23 +21,23 @@ public class LAB_1 {
         File dataFile = new File("MyFile.txt");
         PrintWriter fout = new PrintWriter(dataFile);
 
-        System.out.print("Введіть розмір квадратної матриці: ");
+        System.out.print("Enter the matrix size: ");
         nRows = in.nextInt();
-        in.nextLine(); // очистка буфера після числа
+        in.nextLine(); // РѕС‡РёСЃС‚РєР° Р±СѓС„РµСЂР° РїС–СЃР»СЏ С‡РёСЃР»Р°
 
         arr = new char[nRows][];
         for (int i = 0; i < nRows; i++) {
             arr[i] = new char[nRows - i];
         }
 
-        System.out.print("\nВведіть символ-заповнювач: ");
+        System.out.print("\nEnter the filler: ");
         filler = in.nextLine();
 
         if (filler.length() != 1) {
             if (filler.length() == 0)
-                System.out.println("Не введено символ-заповнювач");
+                System.out.println("Filler is empty");
             else
-                System.out.println("Забагато символів-заповнювачів");
+                System.out.println("Filler is too long");
             fout.close();
             return;
         }
@@ -47,18 +47,19 @@ public class LAB_1 {
         for (int i = 0; i < nRows; i++) {
             StringBuilder row = new StringBuilder();
 
-            // відступи
+            //РІС–РґСЃС‚СѓРїРё
             for (int s = 0; s < i; s++) {
-                row.append("  "); // два пробіли
+                row.append("  "); //РґРІР° РїСЂРѕР±С–Р»Рё
             }
 
-            // символи
+            //СЃРёРјРІРѕР»Рё
             for (int j = 0; j < arr[i].length; j++) {
                 arr[i][j] = symbol;
                 row.append(symbol).append(" ");
             }
 
-            // готовий рядок — і в консоль, і у файл
+
+            // РіРѕС‚РѕРІРёР№ СЂСЏРґРѕРє вЂ” С– РІ РєРѕРЅСЃРѕР»СЊ, С– Сѓ С„Р°Р№Р»
             System.out.println(row.toString());
             fout.println(row.toString());
         }
