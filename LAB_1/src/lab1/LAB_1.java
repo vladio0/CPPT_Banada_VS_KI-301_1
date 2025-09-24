@@ -21,7 +21,7 @@ public class LAB_1 {
         File dataFile = new File("MyFile.txt");
         PrintWriter fout = new PrintWriter(dataFile);
 
-        System.out.print("Enter the matrix size: ");
+        System.out.print("Введіть розмір квадратної матриці: ");
         nRows = in.nextInt();
         in.nextLine(); // очистка буфера після числа
 
@@ -30,14 +30,14 @@ public class LAB_1 {
             arr[i] = new char[nRows - i];
         }
 
-        System.out.print("\nEnter the filler: ");
+        System.out.print("\nВведіть символ-заповнювач: ");
         filler = in.nextLine();
 
         if (filler.length() != 1) {
             if (filler.length() == 0)
-                System.out.println("Filler is empty");
+                System.out.println("Не введено символ-заповнювач");
             else
-                System.out.println("Filler is too long");
+                System.out.println("Забагато символів-заповнювачів");
             fout.close();
             return;
         }
@@ -47,17 +47,25 @@ public class LAB_1 {
         for (int i = 0; i < nRows; i++) {
             StringBuilder row = new StringBuilder();
 
-            //відступи
+
+
+            // відступи
             for (int s = 0; s < i; s++) {
-                row.append("  "); //два пробіли
+                row.append("  "); // два пробіли
             }
 
-            //символи
-            for (int j = 0; j < arr[i].length; j++) {
-                arr[i][j] = symbol;
-                row.append(symbol).append(" ");
-            }
+            // символи
+           for (int j = 0; j < arr[i].length; j++) {
+                /*arr[i][j] = '*';//symbol;
+                if (j == arr[i].length - 1) {
+                    arr[i][j] = '+';
+                }*/
+               if (j == arr[i].length - 1)
+                row.append('+').append(" ");
+                else
+                    row.append(symbol).append(" ");
 
+           }
 
             // готовий рядок — і в консоль, і у файл
             System.out.println(row.toString());
